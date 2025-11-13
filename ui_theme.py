@@ -11,7 +11,6 @@ def show_global_title():
         <h1 style='text-align:center; font-size:42px; margin: 0 0 4px 0; color:#e5e7eb;'>
             ✈️ Análisis de vuelos y demoras en Argentina
         </h1>
-        <hr style='margin-top:10px; margin-bottom:32px; border:1px solid #2a2f3a;'/>
         """,
         unsafe_allow_html=True
     )
