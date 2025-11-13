@@ -63,7 +63,7 @@ def _uade_sidebar_header():
             border-left: 1px solid rgba(255,255,255,0.35);
             font-size: 12px;
             color: #e5e7eb;
-            content: "Grupo 1 - Ciencia de Datos\\AReinaldo Barreto\\AOriana Bianchi\\AFederico Rey\\AGabriel Kraus";
+            content: "Grupo 1 - Ciencia de Datos\\AReinaldo Barreto\\AOriana Bianchi\\A Federico Rey\\AGabriel Kraus";
         }}
         </style>
         """,

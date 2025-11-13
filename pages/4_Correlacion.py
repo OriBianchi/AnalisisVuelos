@@ -124,16 +124,6 @@ df_tiempo_vuelos = pd.read_csv(DATA_ROOT / "promedio_tiempos_vuelo.csv")
 # ======================================================
 # CORRELACION
 # ======================================================
-st.subheader("📊 Correlación: duración predicha vs demora - Utilizando modelo predictivo")
-
-st.markdown("""
-En este análisis se estudia la **correlación entre la duración prevista de los vuelos y los retrasos reales**.
-Para ello, se selecciona una **muestra diversa de rutas aéreas** tomadas del conjunto `df_raw`, con diferentes 
-combinaciones de **Origen**, **Destino** y **Aerolínea**.
-
-Luego, se utiliza el **modelo `model_1`** para predecir la duración estimada del vuelo. Esto permite comparar la 
-duración predicha con el promedio histórico y aplicar una regresión lineal.
-""")
 
 sample_size = st.slider("Tamaño de muestra", 300, 3000, 1000, step=100)
 df_sample = df_raw.sample(n=sample_size, random_state=42)
@@ -193,44 +183,44 @@ coef_main = lr.coef_[0]
 # ======================================================
 # RESULTADO DEL MODELO
 # ======================================================
-st.info(f"""
-### Resultados de la regresión con el modelo predictivo
+# st.info(f"""
+# ### Resultados de la regresión con el modelo predictivo
 
-**• Pendiente (slope):** `{coef_main:.4f}`  
+# **• Pendiente (slope):** `{coef_main:.4f}`  
 
-Una pendiente cercana a cero indica que la **duración predicha no explica las demoras**.
-En otras palabras, vuelos que el modelo predice como más largos **no tienden a demorar más**.
-""")
+# Una pendiente cercana a cero indica que la **duración predicha no explica las demoras**.
+# En otras palabras, vuelos que el modelo predice como más largos **no tienden a demorar más**.
+# """)
 
-# ======================================================
-# GRAFICO
-# ======================================================
-fig = go.Figure()
+# # ======================================================
+# # GRAFICO
+# # ======================================================
+# fig = go.Figure()
 
-fig.add_trace(go.Scatter(
-    x=df_filtered["predicted_minutos_vuelo"],
-    y=df_filtered["delay_in_minutes"],
-    mode="markers",
-    name="Datos reales",
-    opacity=0.5
-))
+# fig.add_trace(go.Scatter(
+#     x=df_filtered["predicted_minutos_vuelo"],
+#     y=df_filtered["delay_in_minutes"],
+#     mode="markers",
+#     name="Datos reales",
+#     opacity=0.5
+# ))
 
-fig.add_trace(go.Scatter(
-    x=df_filtered["predicted_minutos_vuelo"],
-    y=pred_lr,
-    mode="lines",
-    name="Regresión lineal",
-    line=dict(color="red")
-))
+# fig.add_trace(go.Scatter(
+#     x=df_filtered["predicted_minutos_vuelo"],
+#     y=pred_lr,
+#     mode="lines",
+#     name="Regresión lineal",
+#     line=dict(color="red")
+# ))
 
-fig.update_layout(
-    title="Duración predicha vs Demora real",
-    xaxis_title="Duración predicha (min)",
-    yaxis_title="Demora (min)",
-    height=550
-)
+# fig.update_layout(
+#     title="Duración predicha vs Demora real",
+#     xaxis_title="Duración predicha (min)",
+#     yaxis_title="Demora (min)",
+#     height=550
+# )
 
-st.plotly_chart(fig, use_container_width=True)
+# st.plotly_chart(fig, use_container_width=True)
 
 # ======================================================
 # HIPÓTESIS ALTERNATIVA
